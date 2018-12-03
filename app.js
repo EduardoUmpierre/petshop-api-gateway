@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 const axios = require('axios');
 const orderApi = 'https://petshop-api.herokuapp.com/api/v1/';
+const reportApi = 'https://petshop-api-reports.herokuapp.com/api/v1/';
 
 app.get('/order/:id', function (req, res) {
 	axios.get(orderApi + 'order/' + req.params.id)
@@ -20,12 +21,12 @@ app.post('/order', function (req, res) {
 });
 
 app.get('/report/customer/:id', function (req, res) {
-	axios.get(orderApi + '/report/customer/' + req.params.id)
+	axios.get(reportApi + 'report/customer/' + req.params.id)
 		.then(response => res.json(response.data))
 		.catch(error => res.json(error));
 });
 app.get('/report/product/:id', function (req, res) {
-	axios.get(orderApi + '/report/product/' + req.params.id)
+	axios.get(reportApi + 'report/product/' + req.params.id)
 		.then(response => res.json(response.data))
 		.catch(error => res.json(error));
 });
